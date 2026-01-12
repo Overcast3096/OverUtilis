@@ -1,9 +1,13 @@
-import "./App.css";
+import Header from "./components/Header";
+import Main from "./components/Main";
+
+import "./styles/basic.css";
 
 function App() {
     return (
         <div>
-            <p>Hi from react!</p>
+            <Header></Header>
+            <Main></Main>
         </div>
     );
 }
