@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 333.37 283.48">
+  <defs>
+    <style>
+      .cls-1 {
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <g id="Personal_Icon" data-name="Personal Icon">
+      <path id="Wave" d="M0,237.19h0c40.8,59.34,126.5,60.68,175.08,9.48,41.93-44.68,114.95-54.13,158.3-5.58-44.77-49.87-126.24-61.87-175.04-10.44-53.82,49.88-106.55,49.64-158.34,6.54Z"/>
+      <polygon id="Diamond" class="cls-1" points="96.26 160.94 123.08 241.06 42.96 214.25 16.14 134.13 96.26 160.94"/>
+      <polygon id="Star" class="cls-1" points="161.85 0 199.28 45.6 254.49 24.82 233.7 80.03 279.31 117.45 221.1 127.06 211.5 185.26 174.07 139.66 118.86 160.44 139.65 105.23 94.04 67.81 152.25 58.2 161.85 0"/>
+    </g>
+  </g>
+</svg>
