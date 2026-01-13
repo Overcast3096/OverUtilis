@@ -4,7 +4,6 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 
 import App from "./App.jsx";
-import Main from "./components/Main.jsx";
 import Calculator from "./components/catagories/Calculator.jsx";
 import Converter from "./components/catagories/Converter.jsx";
 import Improver from "./components/catagories/Improver.jsx";

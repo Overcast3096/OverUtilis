@@ -1,0 +1,30 @@
+.util-layout {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 5rem 1fr;
+    gap: 1rem;
+}
+
+/* =================================== */
+
+.util-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed #eeeffe;
+    > h1 {
+        margin-left: 2rem;
+    }
+}
+
+.navbar-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin: 0 1rem;
+}
+.navbar-reset {
+    all: unset;
+}

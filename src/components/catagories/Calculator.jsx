@@ -1,5 +1,5 @@
 function Calculator() {
-    return;
+    return <p>calculator</p>;
 }
 
 export default Calculator;

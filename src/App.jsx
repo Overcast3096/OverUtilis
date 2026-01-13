@@ -1,13 +1,16 @@
+import { useState } from "react";
+import { Outlet } from "react-router";
 import Header from "./components/Header";
-import Main from "./components/Main";
 
-import "./styles/basic.css";
+import "./styles/layout.css";
+import "./styles/button.css";
 
 function App() {
     return (
-        <div>
-            <Header></Header>
-            <Main></Main>
+        <div className="util-layout">
+            <Header />
+
+            <Outlet />
         </div>
     );
 }

@@ -1,0 +1,47 @@
+.btn-primary,
+.btn-secondary,
+.btn-inactive {
+    display: block;
+    min-height: 36px;
+    min-width: 100px;
+
+    border-radius: 0.2rem;
+    border-style: solid;
+
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 1rem;
+    font-style: normal;
+
+    cursor: pointer;
+
+    transition: ease 0.2s;
+}
+
+.btn-primary {
+    background: #bbc4ed;
+    border-color: #8070f9;
+    border-width: 3px;
+    font-weight: 400;
+}
+:hover.btn-inactive,
+.btn-selected {
+    color: #000;
+    background: #9ba4cd;
+    border-color: #bbc4ed;
+    font-weight: 400;
+}
+.btn-inactive {
+    color: #fff;
+    background: #414050;
+    border-color: #515060;
+    font-weight: 400;
+}
+
+/* 
+font-family: "Quicksand", sans-serif;
+font-optical-sizing: auto;
+font-weight: 500;
+font-style: normal;
+font-size: 1.3em; 
+*/
