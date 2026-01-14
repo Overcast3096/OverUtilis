@@ -31,6 +31,14 @@ h3 {
     font-size: 1.3em;
 }
 
+em {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 1.3em;
+}
+
 p {
     font-family: "Noto Sans", sans-serif;
     font-optical-sizing: auto;

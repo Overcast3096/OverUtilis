@@ -2,11 +2,12 @@ import { NavLink, useLocation } from "react-router";
 
 function Header() {
     const { pathname: path } = useLocation();
-    const isCalcTab = path === "/" || path.startsWith("/calculators");
+
+    const isCalcTab = path === "/" || path.startsWith("/calculator");
 
     return (
         <header className="util-header">
-            <h1>Over's Utilities</h1>
+            <h1>Overcast's Utilities</h1>
             <nav className="navbar-row">
                 <NavLink to="/converters" className={"navbar-reset"}>
                     {({ isActive }) => (

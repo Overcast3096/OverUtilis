@@ -4,6 +4,7 @@ import Header from "./components/Header";
 
 import "./styles/layout.css";
 import "./styles/button.css";
+import "./styles/sidebar.css";
 
 function App() {
     return (

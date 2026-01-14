@@ -7,8 +7,11 @@ import App from "./App.jsx";
 import Calculator from "./components/catagories/Calculator.jsx";
 import Converter from "./components/catagories/Converter.jsx";
 import Improver from "./components/catagories/Improver.jsx";
+import Splash from "./components/catagories/Splash.jsx";
+
 import AlphaNumber from "./components/catagories/modules/AlphaNumber.jsx";
 import Waterline from "./components/catagories/modules/Waterline.jsx";
+import Overclock from "./components/catagories/modules/Overclock.jsx";
 
 import "./styles/reset.css";
 import "./index.css";
@@ -22,7 +25,11 @@ const router = createBrowserRouter([
             {
                 path: "calculators",
                 Component: Calculator,
-                children: [{ path: "waterline", Component: Waterline }],
+                children: [
+                    { index: true, Component: Splash },
+                    { path: "waterline", Component: Waterline },
+                    { path: "overclock", Component: Overclock },
+                ],
             },
             { index: true, Component: Calculator },
             {
