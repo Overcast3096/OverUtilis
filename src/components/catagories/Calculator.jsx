@@ -16,7 +16,7 @@ function Calculator() {
                     <em>GTNH</em>
                 </div>
                 <NavLink
-                    to="/calculators/waterline"
+                    to="/calculators/overclock"
                     className={"navbar-reset sidebar-indent"}
                 >
                     {({ isActive }) => (
@@ -27,10 +27,13 @@ function Calculator() {
                                     : "sidebar-inactive"
                             }
                         >
-                            Waterline
+                            Overclock
                         </button>
                     )}
                 </NavLink>
+                <div className="sidebar-indent">
+                    <button className="sidebar-unavailable">Waterline</button>
+                </div>
             </Sidebar>
             <Outlet context={{ splashText }} />
         </div>

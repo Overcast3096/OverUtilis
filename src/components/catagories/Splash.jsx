@@ -4,12 +4,12 @@ function Splash() {
     const { splashText } = useOutletContext();
 
     return (
-        <div>
-            <div>
+        <div className="splash-layout">
+            <div className="splash-item">
                 <h3>{splashText.title}</h3>
                 <p>{splashText.desc}</p>
             </div>
-            <p>{splashText.detail}</p>
+            <p className="splash-item">{splashText.detail}</p>
         </div>
     );
 }
