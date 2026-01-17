@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import "../../../styles/overclock.css";
 
 function Overclock() {
@@ -10,9 +10,7 @@ function Overclock() {
         parallel: "",
         behave: "",
     });
-    const output = "placeholder output";
-    const invalidInputText =
-        "Results will be displayed when all values are set.";
+    const displayData = useMemo(() => calcOutput(inputs), [inputs]);
 
     function handleInputs(e) {
         const { name, value } = e.target;
@@ -23,7 +21,7 @@ function Overclock() {
     }
 
     function calcOutput(calcInput) {
-        const {
+        let {
             recipeTime,
             recipeVoltage,
             inputVoltage,
@@ -31,6 +29,8 @@ function Overclock() {
             parallel,
             behave,
         } = calcInput;
+        const invalidInputText =
+            "Results will be displayed when all values are set.";
 
         const errorData =
             recipeTime === "" ||
@@ -44,50 +44,49 @@ function Overclock() {
             return invalidInputText;
 
         const outputMeta = {
+            isOverTier: false,
             mandatoryOverclock: false,
             wastedAmps: 0,
             usedParallels: 0,
             subtick: false,
-            perOutput: 1,
             perfectSpeed: 0,
             flawedSpeed: 0,
         };
 
-        // definitely good code here :tm:
+        // ----------Logic---------- //
 
+        // Special Case - needed OC
         if (recipeVoltage > inputVoltage && inputAmp > 3) {
             outputMeta.mandatoryOverclock = true;
-            outputMeta.usedParallels = inputAmp % 4;
-            // return with no mod speed, no oc, just input speed and used parallel
+            outputMeta.isOverTier = true;
+            recipeVoltage += 1; // causes issues
         }
 
-        if (inputAmp > parallel) {
-            outputMeta.perOutput = parallel;
-            outputMeta.usedParallels = parallel;
-            outputMeta.wastedAmps = inputAmp - parallel;
-        }
+        // Eats parallel & wasted amps
+        outputMeta.usedParallels = inputAmp > parallel ? parallel : inputAmp;
+        outputMeta.wastedAmps = Math.max(0, inputAmp - parallel);
 
-        if (parallel === inputAmp) {
-            outputMeta.perOutput = parallel;
-            outputMeta.usedParallels = parallel;
-            // further complicated thingy when mebf/other input unlimited a is on
-        }
+        // Power budgets
+        const convertedPower = 4 ** recipeVoltage * outputMeta.usedParallels;
+        const powerBudget = 4 ** inputVoltage * inputAmp;
+        // 4 ** inputVoltage + 4 ** inputVoltage * outputMeta.wastedAmps;
 
-        // let a = outputMeta.usedParallels * (recipeVoltage * 4); // gives baseline after calc lv
-        // let b = (inputAmp * inputVoltage) + outputMeta.wastedAmps; // gives total power working with lv
-        // let c = a % b; // how much does it go into
-        const overallSpeed =
-            (outputMeta.usedParallels * (recipeVoltage * 4)) %
-            (inputAmp * inputVoltage);
-        outputMeta.perfectSpeed = overallSpeed * 4;
-        outputMeta.flawedSpeed = overallSpeed * 2;
+        // Max number of OCs
+        // Log(n) / Log(base), emulates root like behaviour
+        const totalOC = Math.floor(
+            Math.log(powerBudget / convertedPower) / Math.log(4)
+        );
 
-        // ips = outputMeta.perOutput / recipeTime;
-        outputMeta.perfectSpeed =
-            (outputMeta.perOutput / recipeTime) * (4 * outputMeta.perfectSpeed);
+        outputMeta.isOverTier =
+            totalOC > recipeVoltage - inputVoltage ? true : false;
+
+        // Final i/s
         outputMeta.flawedSpeed =
-            (outputMeta.perOutput / recipeTime) * (2 * outputMeta.flawedSpeed);
+            (2 ** totalOC / recipeTime) * outputMeta.usedParallels;
+        outputMeta.perfectSpeed =
+            (4 ** totalOC / recipeTime) * outputMeta.usedParallels;
 
+        console.log([convertedPower, powerBudget, "", totalOC]);
         return outputMeta;
     }
 
@@ -214,8 +213,33 @@ function Overclock() {
                     multi
                 </p>
             </div>
-            <div className="overclock-item overclock-row">
-                <div>{JSON.stringify(calcOutput(inputs))}</div>
+            <div className="overclock-item overclock-column">
+                <div>{JSON.stringify(displayData)}</div>
+                <div>
+                    <p>
+                        {() => {
+                            if (displayData.mandatoryOverclock) {
+                                return `This machine is overclocking beyond it's
+                                    inputted voltage tier to meet the recipe's
+                                    demands! Make sure your machine is capable
+                                    of doing this!`;
+                            }
+                        }}
+                    </p>
+                </div>
+
+                <div>
+                    <p>
+                        If the machine can Perfect OC, you would get{" "}
+                        {displayData.perfectSpeed}/s recipe completions.
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        If it's doing Inperfect OCs, you would get{" "}
+                        {displayData.flawedSpeed}/s recipe completions.
+                    </p>
+                </div>
             </div>
         </div>
     );
