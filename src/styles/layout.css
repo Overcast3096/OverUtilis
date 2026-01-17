@@ -30,3 +30,23 @@
 }
 
 /* =================================== */
+
+.splash-layout {
+    display: flex;
+    margin-bottom: 4rem;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.splash-item {
+    display: block;
+    width: 70%;
+
+    > h3 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+}

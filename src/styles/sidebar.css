@@ -29,7 +29,8 @@
 
 .sidebar-primary,
 .sidebar-inactive,
-.sidebar-active {
+.sidebar-active,
+.sidebar-unavailable {
     display: block;
     height: 3rem;
     width: 100%;
@@ -64,4 +65,18 @@
     background: #414050;
     border-color: #515060;
     font-weight: 400;
+}
+
+.sidebar-unavailable {
+    color: #fff;
+    background: #414050;
+    border-color: #d56061;
+    font-weight: 300;
+    font-style: italic;
+    cursor: not-allowed;
+}
+.sidebar-unavailable:hover {
+    color: #fff;
+    background: #d56061;
+    border-color: #eeeffe;
 }

@@ -1,0 +1,28 @@
+.overclock-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+}
+
+.overclock-item {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.overclock-row {
+    flex-direction: row;
+}
+.overclock-column {
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.overclock-input {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+}
