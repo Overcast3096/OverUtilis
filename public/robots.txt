@@ -1,0 +1,5 @@
+# Please kindly pound sand, AI companies. Thank you!
+# No indexing! For now this is a hidden outcove.
+
+User-agent: *
+Disallow: /
